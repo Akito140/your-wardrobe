@@ -4,39 +4,109 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#f7f6fa">
-    <title>Избранное — Your Wardrobe</title>
+    <meta name="description" content="Демо-подборка готовых образов и примерка Stylo.">
+    <title>Образы — Stylo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Unbounded:wght@500;600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/styles.css?v=app-ui" rel="stylesheet">
+    <link href="assets/css/styles.css?v=catalog-ui" rel="stylesheet">
   </head>
   <body class="app-page">
     <a class="skip" href="#main">К содержимому</a>
     <header class="app-header">
       <a class="app-wordmark" href="index.html">stylo<span>.</span></a>
-      <span class="profile-page-label">ИЗБРАННОЕ</span>
+      <a class="header-profile" href="style-profile.html" aria-label="Открыть профиль">AK</a>
     </header>
+
     <main id="main" class="app-shell">
       <section class="app-intro">
-        <p class="eyebrow">СОХРАНЁННЫЕ ОБРАЗЫ</p>
-        <h1>Тебе нравится</h1>
+        <p class="eyebrow">ГОТОВЫЕ СОЧЕТАНИЯ</p>
+        <h1>Образы</h1>
+        <p class="app-subtitle">Идеи сочетаний из вещей каталога. Примерка здесь — визуальная демо.</p>
       </section>
-      <div class="look-grid" id="favorites-grid" aria-live="polite"></div>
-      <div class="empty-favorites" id="favorites-empty" hidden>
-        <span aria-hidden="true">♡</span>
-        <h2>Пока пусто</h2>
-        <p>Нажми на сердечко у образа, чтобы сохранить его здесь.</p>
-        <a class="btn btn-primary" href="index.html">Смотреть образы</a>
+
+      <div class="filter-rail" role="group" aria-label="Фильтр образов">
+        <button class="filter-chip is-selected" type="button" data-filter="all" aria-pressed="true">Все</button>
+        <button class="filter-chip" type="button" data-filter="classic" aria-pressed="false">Классика</button>
+        <button class="filter-chip" type="button" data-filter="street" aria-pressed="false">Городской</button>
+        <button class="filter-chip" type="button" data-filter="sport" aria-pressed="false">Комфорт</button>
       </div>
+
+      <section class="look-grid" id="look-grid" aria-label="Подборка образов">
+        <article class="look-card" data-look="burgundy" data-style="street">
+          <div class="look-image-wrap">
+            <img class="look-image" src="assets/images/looks/burgundy-street.png" alt="Бордовый городской образ с денимом" loading="lazy">
+            <button class="look-favorite" type="button" aria-pressed="false" aria-label="Добавить образ в избранное">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg>
+            </button>
+            <span class="look-number">01 / 04</span>
+          </div>
+          <div class="look-info"><div><h2>Городской гранж</h2><p>Бордовый · деним · детали</p></div><button class="try-on-button" type="button" data-tryon="burgundy"><span aria-hidden="true">✦</span> Примерить</button></div>
+        </article>
+        <article class="look-card" data-look="monochrome" data-style="classic">
+          <div class="look-image-wrap">
+            <img class="look-image" src="assets/images/looks/monochrome-classic.png" alt="Монохромный образ в мягких слоях" loading="lazy">
+            <button class="look-favorite" type="button" aria-pressed="false" aria-label="Добавить образ в избранное">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg>
+            </button>
+            <span class="look-number">02 / 04</span>
+          </div>
+          <div class="look-info"><div><h2>Тихая классика</h2><p>Монохром · мягкий слой</p></div><button class="try-on-button" type="button" data-tryon="monochrome"><span aria-hidden="true">✦</span> Примерить</button></div>
+        </article>
+        <article class="look-card" data-look="noir" data-style="classic">
+          <div class="look-image-wrap">
+            <img class="look-image" src="assets/images/looks/black-editorial.png" alt="Чёрный образ с выразительными фактурами" loading="lazy">
+            <button class="look-favorite" type="button" aria-pressed="false" aria-label="Добавить образ в избранное">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg>
+            </button>
+            <span class="look-number">03 / 04</span>
+          </div>
+          <div class="look-info"><div><h2>После полуночи</h2><p>Чёрный · фактуры · кожа</p></div><button class="try-on-button" type="button" data-tryon="noir"><span aria-hidden="true">✦</span> Примерить</button></div>
+        </article>
+        <article class="look-card" data-look="sport" data-style="sport">
+          <div class="look-image-wrap">
+            <img class="look-image" src="assets/images/looks/sport-urban.png" alt="Комфортный городской спортивный образ" loading="lazy">
+            <button class="look-favorite" type="button" aria-pressed="false" aria-label="Добавить образ в избранное">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg>
+            </button>
+            <span class="look-number">04 / 04</span>
+          </div>
+          <div class="look-info"><div><h2>Уличный комфорт</h2><p>Спорт · карго · кеды</p></div><button class="try-on-button" type="button" data-tryon="sport"><span aria-hidden="true">✦</span> Примерить</button></div>
+        </article>
+      </section>
+      <p class="demo-disclaimer"><span aria-hidden="true">✳</span> Иллюстрация примерки не использует и не изменяет фото. Это концепт, а не генерация изображения.</p>
       <p class="storage-status" id="favorite-status" role="status" aria-live="polite" hidden></p>
     </main>
+
     <nav class="app-tabs" aria-label="Разделы приложения">
-      <a class="app-tab" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/></svg><span>Образы</span></a>
+      <a class="app-tab" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg><span>Каталог</span></a>
       <a class="app-tab" href="wardrobe.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14l2 14H3L5 7ZM9 7a3 3 0 0 1 6 0"/></svg><span>Гардероб</span></a>
-      <a class="app-tab is-active" href="outfit-studio.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg><span>Избранное</span></a>
+      <a class="app-tab" href="outfit-studio.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg><span>Образы</span></a>
       <a class="app-tab" href="style-profile.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Профиль</span></a>
     </nav>
-    <script src="assets/js/app.js"></script>
+
+    <dialog class="tryon-dialog" id="tryon-dialog" aria-labelledby="tryon-look-name">
+      <div class="tryon-sheet">
+        <div class="dialog-handle" aria-hidden="true"></div>
+        <div class="tryon-header">
+          <div><p class="eyebrow">ВИЗУАЛЬНАЯ ДЕМО-ПРИМЕРКА</p><h2 id="tryon-look-name">Образ</h2></div>
+          <button class="round-icon-button" type="button" data-close-tryon aria-label="Закрыть примерку">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m18 6-12 12M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <div class="tryon-preview"><div class="tryon-avatar" id="tryon-avatar"></div><p>Иллюстрация-схема, не фото и не прогноз посадки</p></div>
+        <div class="tryon-result-note"><span aria-hidden="true">✳</span><p>Чтобы показать идею бесплатно, здесь используется иллюстрация. Реальной генерации фото нет.</p></div>
+        <div class="tryon-photo-control">
+          <label class="photo-pick" for="tryon-photo">Выбрать фото только для просмотра</label>
+          <input id="tryon-photo" type="file" accept="image/*" capture="user" hidden>
+          <img id="tryon-photo-preview" alt="Выбранное фото" hidden>
+          <p id="tryon-photo-status" role="status" aria-live="polite">Фото не отправляется и не переодевается.</p>
+        </div>
+        <button class="btn btn-primary tryon-done" type="button" data-close-tryon>Готово</button>
+      </div>
+    </dialog>
+
+    <script src="assets/js/app.js?v=catalog-ui"></script>
   </body>
 </html>

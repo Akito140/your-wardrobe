@@ -9,6 +9,19 @@
     noir: { name: 'После полуночи', description: 'Чёрный · фактуры · кожа', image: 'black-editorial.png', top: '#17171b', layer: '#222329', bottom: '#29292e', shoes: '#151519', accent: '#85808f' },
     sport: { name: 'Уличный комфорт', description: 'Спорт · карго · кеды', image: 'sport-urban.png', top: '#202126', layer: '#343a42', bottom: '#282a2f', shoes: '#eeeae3', accent: '#aeb6ba' }
   };
+  const PRODUCTS = [
+    { id: 'shirt-burgundy', name: 'Бордовая рубашка', image: 'shirt-burgundy.png', category: 'tops', categoryLabel: 'Верх', price: 2900, material: 'Хлопок и вискоза · описание-пример', fit: 'Свободный, длинный рукав', seller: 'Бутик «Линия» · демо', email: 'line@example.com', sizes: ['S', 'M', 'L', 'XL'], colors: [{ name: 'Бордовый', value: '#762b3a' }, { name: 'Чёрный', value: '#27262b' }] },
+    { id: 'shirt-black', name: 'Чёрная рубашка', image: 'shirt-black.png', category: 'tops', categoryLabel: 'Верх', price: 2600, material: 'Хлопок · описание-пример', fit: 'Прямой, слегка свободный', seller: 'Демо-магазин «Forma»', email: 'forma@example.com', sizes: ['S', 'M', 'L', 'XL'], colors: [{ name: 'Чёрный', value: '#232329' }, { name: 'Белый', value: '#efede8' }] },
+    { id: 'sweater-black', name: 'Чёрный свитер', image: 'sweater-black.png', category: 'tops', categoryLabel: 'Верх', price: 3400, material: 'Шерсть и акрил · описание-пример', fit: 'Расслабленный, круглый вырез', seller: 'Бутик «Линия» · демо', email: 'line@example.com', sizes: ['XS', 'S', 'M', 'L'], colors: [{ name: 'Чёрный', value: '#242329' }, { name: 'Серый', value: '#aaa8ae' }] },
+    { id: 'jacket-black', name: 'Городская куртка', image: 'jacket-black.png', category: 'outerwear', categoryLabel: 'Верхняя одежда', price: 5200, material: 'Полиэстер · описание-пример', fit: 'Свободный, воротник-стойка', seller: 'Демо-маркетплейс «Стилист»', email: 'market@example.com', sizes: ['S', 'M', 'L', 'XL'], colors: [{ name: 'Чёрный', value: '#24242a' }, { name: 'Графит', value: '#55565c' }] },
+    { id: 'blazer-check', name: 'Клетчатый жакет', image: 'blazer-check.png', category: 'outerwear', categoryLabel: 'Верхняя одежда', price: 6100, material: 'Смесовая ткань · описание-пример', fit: 'Прямой, немного oversize', seller: 'Демо-бутик «Север»', email: 'sever@example.com', sizes: ['S', 'M', 'L'], colors: [{ name: 'Серо-чёрная клетка', value: '#44434a' }] },
+    { id: 'pants-cargo', name: 'Брюки-карго', image: 'pants-cargo.png', category: 'bottoms', categoryLabel: 'Брюки', price: 4400, material: 'Хлопковый твил · описание-пример', fit: 'Свободный, прямые штанины', seller: 'Демо-магазин «Forma»', email: 'forma@example.com', sizes: ['S', 'M', 'L', 'XL'], colors: [{ name: 'Чёрный', value: '#202126' }, { name: 'Оливковый', value: '#59634b' }] },
+    { id: 'pants-pinstripe', name: 'Брюки в тонкую полоску', image: 'pants-pinstripe.png', category: 'bottoms', categoryLabel: 'Брюки', price: 3900, material: 'Вискоза и полиэстер · описание-пример', fit: 'Высокая посадка, прямой крой', seller: 'Демо-бутик «Север»', email: 'sever@example.com', sizes: ['XS', 'S', 'M', 'L'], colors: [{ name: 'Чёрный', value: '#25252a' }] },
+    { id: 'sneakers-high', name: 'Высокие кеды', image: 'sneakers-high.png', category: 'shoes', categoryLabel: 'Обувь', price: 3800, material: 'Текстиль и резина · описание-пример', fit: 'Высокая шнуровка', seller: 'Демо-маркетплейс «Стилист»', email: 'market@example.com', sizes: ['37', '38', '39', '40', '41', '42', '43'], colors: [{ name: 'Чёрно-белый', value: '#34343a' }] },
+    { id: 'boots-black', name: 'Чёрные ботинки', image: 'boots-black.png', category: 'shoes', categoryLabel: 'Обувь', price: 6900, material: 'Искусственная кожа · описание-пример', fit: 'На шнуровке, массивная подошва', seller: 'Бутик «Линия» · демо', email: 'line@example.com', sizes: ['37', '38', '39', '40', '41', '42'], colors: [{ name: 'Чёрный', value: '#202024' }] }
+  ];
+
+  const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
 
   const tabs = $$('.app-tab');
   if (tabs.length) {
@@ -19,6 +32,105 @@
       if (active) tab.setAttribute('aria-current', 'page');
       else tab.removeAttribute('aria-current');
     });
+  }
+
+  const productGrid = $('#product-grid');
+  if (productGrid) {
+    const search = $('#catalog-search');
+    const count = $('#catalog-count');
+    const empty = $('#products-empty');
+    let activeCategory = 'all';
+    const renderProducts = () => {
+      const query = search.value.trim().toLocaleLowerCase('ru');
+      const products = PRODUCTS.filter(product => (activeCategory === 'all' || product.category === activeCategory)
+        && `${product.name} ${product.categoryLabel} ${product.seller}`.toLocaleLowerCase('ru').includes(query));
+      productGrid.innerHTML = products.map(product => `<article class="product-card">
+        <button class="product-image-button" type="button" data-product="${product.id}" aria-label="Подробнее: ${escapeHtml(product.name)}">
+          <span class="product-demo-tag">ДЕМО</span>
+          <img src="assets/images/products/${product.image}" alt="${escapeHtml(product.name)}" loading="lazy">
+        </button>
+        <div class="product-card-info">
+          <p class="product-category">${escapeHtml(product.categoryLabel)}</p>
+          <h3><button class="product-title-button" type="button" data-product="${product.id}">${escapeHtml(product.name)}</button></h3>
+          <p class="product-seller-short">${escapeHtml(product.seller)}</p>
+          <div class="product-card-bottom"><strong>${product.price.toLocaleString('ru-RU')} сом</strong><button type="button" class="product-details-button" data-product="${product.id}" aria-label="Подробнее о товаре ${escapeHtml(product.name)}">›</button></div>
+        </div>
+      </article>`).join('');
+      count.textContent = `Вещей: ${products.length}`;
+      empty.hidden = products.length > 0;
+    };
+
+    search.addEventListener('input', renderProducts);
+    $$('[data-product-filter]').forEach(button => button.addEventListener('click', () => {
+      activeCategory = button.dataset.productFilter;
+      $$('[data-product-filter]').forEach(chip => {
+        const selected = chip === button;
+        chip.classList.toggle('is-selected', selected);
+        chip.setAttribute('aria-pressed', String(selected));
+      });
+      renderProducts();
+    }));
+
+    const dialog = $('#product-dialog');
+    const orderForm = $('#order-form');
+    let selectedProduct;
+    let selectedColor;
+    const closeProduct = () => {
+      if (dialog.open) dialog.close();
+    };
+    const openProduct = id => {
+      selectedProduct = PRODUCTS.find(product => product.id === id);
+      if (!selectedProduct) return;
+      $('#product-title').textContent = selectedProduct.name;
+      $('#product-detail-image').src = `assets/images/products/${selectedProduct.image}`;
+      $('#product-detail-image').alt = selectedProduct.name;
+      $('#product-detail-price').textContent = `${selectedProduct.price.toLocaleString('ru-RU')} сом · цена-пример`;
+      $('#product-material').textContent = selectedProduct.material;
+      $('#product-fit').textContent = selectedProduct.fit;
+      $('#product-seller').textContent = selectedProduct.seller;
+      const contact = $('#product-contact');
+      contact.href = `mailto:${selectedProduct.email}`;
+      contact.textContent = `${selectedProduct.email} · демо-контакт`;
+      $('#order-size').innerHTML = `<option value="">Выбери размер</option>${selectedProduct.sizes.map(size => `<option value="${escapeHtml(size)}">${escapeHtml(size)}</option>`).join('')}`;
+      $('#order-colors').innerHTML = selectedProduct.colors.map((color, index) => `<label class="color-choice">
+        <input type="radio" name="product-color" value="${escapeHtml(color.name)}" ${index === 0 ? 'checked' : ''}>
+        <span class="color-swatch" style="--swatch:${escapeHtml(color.value)}"></span><span>${escapeHtml(color.name)}</span>
+      </label>`).join('');
+      selectedColor = selectedProduct.colors[0].name;
+      orderForm.hidden = true;
+      $('#order-start').hidden = false;
+      $('#order-status').textContent = '';
+      dialog.showModal();
+    };
+
+    productGrid.addEventListener('click', event => {
+      const button = event.target.closest('[data-product]');
+      if (button) openProduct(button.dataset.product);
+    });
+    $$('[data-close-product]').forEach(button => button.addEventListener('click', closeProduct));
+    dialog.addEventListener('click', event => {
+      if (event.target === dialog) closeProduct();
+    });
+    $('#order-start').addEventListener('click', () => {
+      orderForm.hidden = false;
+      $('#order-start').hidden = true;
+    });
+    $('#order-colors').addEventListener('change', event => {
+      if (event.target.matches('input[name="product-color"]')) selectedColor = event.target.value;
+    });
+    orderForm.addEventListener('submit', event => {
+      event.preventDefault();
+      const size = $('#order-size').value;
+      if (!size) {
+        $('#order-size').reportValidity();
+        return;
+      }
+      $('#order-status').textContent = `Демо: выбран ${selectedProduct.name}, размер ${size}, цвет «${selectedColor}». Заказ не отправлен продавцу.`;
+      orderForm.hidden = true;
+      $('#order-start').hidden = false;
+    });
+
+    renderProducts();
   }
 
   const grid = $('#look-grid');

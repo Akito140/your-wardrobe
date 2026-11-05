@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#f7f6fa">
-    <meta name="description" content="Подборки готовых образов и демонстрационная примерка Your Wardrobe.">
-    <title>Образы — Your Wardrobe</title>
+    <meta name="description" content="Демо-каталог вещей, подборки и продавцы Your Wardrobe.">
+    <title>Каталог — Stylo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Unbounded:wght@500;600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/styles.css?v=app-ui" rel="stylesheet">
+    <link href="assets/css/styles.css?v=catalog-ui" rel="stylesheet">
   </head>
   <body class="app-page">
     <a class="skip" href="#main">К содержимому</a>
@@ -19,122 +19,77 @@
       <a class="header-profile" href="style-profile.html" aria-label="Открыть профиль">AK</a>
     </header>
 
-    <main id="main" class="app-shell">
+    <main id="main" class="app-shell catalog-shell">
       <section class="app-intro">
-        <p class="eyebrow">ТВОЙ СТИЛЬ</p>
-        <h1>Образы для тебя</h1>
+        <p class="eyebrow">ВЕЩИ И ЛОКАЛЬНЫЕ БУТИКИ</p>
+        <h1>Каталог</h1>
       </section>
 
-      <div class="filter-rail" role="group" aria-label="Фильтр образов">
-        <button class="filter-chip is-selected" type="button" data-filter="all" aria-pressed="true">Для тебя</button>
-        <button class="filter-chip" type="button" data-filter="everyday" aria-pressed="false">На каждый день</button>
-        <button class="filter-chip" type="button" data-filter="city" aria-pressed="false">Город</button>
-        <button class="filter-chip" type="button" data-filter="dark" aria-pressed="false">Тёмный стиль</button>
+      <label class="catalog-search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>
+        <input id="catalog-search" type="search" aria-label="Поиск по каталогу" placeholder="Найти вещь" autocomplete="off">
+      </label>
+
+      <div class="filter-rail catalog-filters" role="group" aria-label="Категории товаров">
+        <button class="filter-chip is-selected" type="button" data-product-filter="all" aria-pressed="true">Все вещи</button>
+        <button class="filter-chip" type="button" data-product-filter="tops" aria-pressed="false">Верх</button>
+        <button class="filter-chip" type="button" data-product-filter="outerwear" aria-pressed="false">Верхняя одежда</button>
+        <button class="filter-chip" type="button" data-product-filter="bottoms" aria-pressed="false">Брюки</button>
+        <button class="filter-chip" type="button" data-product-filter="shoes" aria-pressed="false">Обувь</button>
       </div>
 
-      <section aria-labelledby="looks-title">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">ПОДБОРКА · 04</p>
-            <h2 id="looks-title">Вдохновение для тебя</h2>
-          </div>
-          <button class="round-icon-button" type="button" id="shuffle-looks" aria-label="Перемешать образы">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
-          </button>
-        </div>
-        <div class="look-grid" id="look-grid">
-          <article class="look-card" data-look="burgundy" data-style="city">
-            <div class="look-image-wrap">
-              <img class="look-image" src="assets/images/looks/burgundy-street.png" alt="Бордовый свободный верх, тёмные джинсы, ботинки и аксессуары" fetchpriority="high">
-              <button class="look-favorite" type="button" aria-label="Добавить образ в избранное" aria-pressed="false">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg>
-              </button>
-              <span class="look-number">01 / 04</span>
-            </div>
-            <div class="look-info">
-              <div><h3>Городской гранж</h3><p>Бордовый · деним · детали</p></div>
-              <button class="try-on-button" type="button" data-tryon="burgundy"><span aria-hidden="true">✦</span> Примерить</button>
-            </div>
-          </article>
-
-          <article class="look-card" data-look="monochrome" data-style="dark">
-            <div class="look-image-wrap">
-              <img class="look-image" src="assets/images/looks/monochrome-classic.png" alt="Чёрный трикотаж, серое пальто, тёмные брюки и аксессуары">
-              <button class="look-favorite" type="button" aria-label="Добавить образ в избранное" aria-pressed="false">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg>
-              </button>
-              <span class="look-number">02 / 04</span>
-            </div>
-            <div class="look-info">
-              <div><h3>Тихая классика</h3><p>Монохром · мягкий слой</p></div>
-              <button class="try-on-button" type="button" data-tryon="monochrome"><span aria-hidden="true">✦</span> Примерить</button>
-            </div>
-          </article>
-
-          <article class="look-card" data-look="noir" data-style="dark">
-            <div class="look-image-wrap">
-              <img class="look-image" src="assets/images/looks/black-editorial.png" alt="Чёрный комплект: рубашка, брюки, ботинки, перчатки и цепочки">
-              <button class="look-favorite" type="button" aria-label="Добавить образ в избранное" aria-pressed="false">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg>
-              </button>
-              <span class="look-number">03 / 04</span>
-            </div>
-            <div class="look-info">
-              <div><h3>После полуночи</h3><p>Чёрный · фактуры · кожа</p></div>
-              <button class="try-on-button" type="button" data-tryon="noir"><span aria-hidden="true">✦</span> Примерить</button>
-            </div>
-          </article>
-
-          <article class="look-card" data-look="sport" data-style="everyday">
-            <div class="look-image-wrap">
-              <img class="look-image" src="assets/images/looks/sport-urban.png" alt="Чёрная футболка и куртка, карго-брюки, ремень и кеды">
-              <button class="look-favorite" type="button" aria-label="Добавить образ в избранное" aria-pressed="false">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg>
-              </button>
-              <span class="look-number">04 / 04</span>
-            </div>
-            <div class="look-info">
-              <div><h3>Уличный комфорт</h3><p>Спорт · карго · кеды</p></div>
-              <button class="try-on-button" type="button" data-tryon="sport"><span aria-hidden="true">✦</span> Примерить</button>
-            </div>
-          </article>
-        </div>
-      </section>
-      <p class="storage-status" id="favorite-status" role="status" aria-live="polite" hidden></p>
-      <p class="demo-disclaimer"><span aria-hidden="true">✳</span> Это концепт-примерка: результат — иллюстрация образа, не генерация фото.</p>
+      <div class="catalog-heading">
+        <h2>Подобрали для тебя</h2>
+        <span id="catalog-count" aria-live="polite"></span>
+      </div>
+      <section class="product-grid" id="product-grid" aria-label="Каталог вещей"></section>
+      <div class="empty-favorites" id="products-empty" hidden>
+        <span aria-hidden="true">⌕</span>
+        <h2>Ничего не найдено</h2>
+        <p>Попробуй изменить запрос или выбрать другую категорию.</p>
+      </div>
+      <p class="demo-disclaimer"><span aria-hidden="true">✳</span> Каталог и продавцы показаны для демонстрации идеи. Заказ здесь не отправляется.</p>
     </main>
 
     <nav class="app-tabs" aria-label="Разделы приложения">
-      <a class="app-tab is-active" href="index.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/></svg><span>Образы</span></a>
+      <a class="app-tab is-active" href="index.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg><span>Каталог</span></a>
       <a class="app-tab" href="wardrobe.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14l2 14H3L5 7ZM9 7a3 3 0 0 1 6 0"/></svg><span>Гардероб</span></a>
-      <a class="app-tab" href="outfit-studio.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg><span>Избранное</span></a>
+      <a class="app-tab" href="outfit-studio.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg><span>Образы</span></a>
       <a class="app-tab" href="style-profile.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Профиль</span></a>
     </nav>
 
-    <dialog class="tryon-dialog" id="tryon-dialog" aria-labelledby="tryon-title">
-      <div class="tryon-sheet">
+    <dialog class="product-dialog" id="product-dialog" aria-labelledby="product-title">
+      <div class="product-sheet">
         <div class="dialog-handle" aria-hidden="true"></div>
         <div class="tryon-header">
-          <div><p class="eyebrow">ДЕМО · БЕЗ ИИ</p><h2 id="tryon-title">Примерка образа</h2></div>
-          <button class="round-icon-button" type="button" data-close-tryon aria-label="Закрыть примерку"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m18 6-12 12M6 6l12 12"/></svg></button>
+          <div><p class="eyebrow">ДЕМО-КАТАЛОГ</p><h2 id="product-title">Вещь</h2></div>
+          <button class="round-icon-button" type="button" data-close-product aria-label="Закрыть карточку">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m18 6-12 12M6 6l12 12"/></svg>
+          </button>
         </div>
-        <p class="tryon-look-name" id="tryon-look-name"></p>
-        <div class="tryon-preview">
-          <div class="tryon-avatar" id="tryon-avatar" aria-label="Иллюстрация модели в выбранном образе"></div>
-          <p>Пример образа на модели</p>
-        </div>
-        <div class="tryon-result-note"><span aria-hidden="true">✦</span><p>Демонстрационный макет: здесь показана иллюстрация в цветах образа. Настоящая генерация фото пока не подключена.</p></div>
-        <div class="tryon-photo-control">
-          <label class="photo-pick" for="tryon-photo"><span aria-hidden="true">＋</span> Добавить фото для концепта</label>
-          <input id="tryon-photo" type="file" accept="image/*" hidden>
-          <p id="tryon-photo-status">Фото останется только в этой вкладке браузера и не отправится на сервер.</p>
-          <img id="tryon-photo-preview" alt="Выбранное вами фото" hidden>
-        </div>
-        <button class="btn btn-primary tryon-done" type="button" data-close-tryon>Понятно</button>
+        <div class="product-detail-image-wrap"><img id="product-detail-image" alt=""></div>
+        <p class="product-detail-price" id="product-detail-price"></p>
+        <dl class="product-specs">
+          <div><dt>Материал</dt><dd id="product-material"></dd></div>
+          <div><dt>Крой</dt><dd id="product-fit"></dd></div>
+          <div><dt>Продавец</dt><dd id="product-seller"></dd></div>
+          <div><dt>Контакт</dt><dd><a id="product-contact"></a></dd></div>
+        </dl>
+        <button class="btn btn-primary order-start" id="order-start" type="button">Заказать</button>
+        <form class="order-panel" id="order-form" hidden>
+          <label class="form-label" for="order-size">Размер</label>
+          <select class="form-select" id="order-size" required></select>
+          <fieldset id="order-color-group">
+            <legend>Цвет</legend>
+            <div class="color-options" id="order-colors"></div>
+          </fieldset>
+          <button class="btn btn-primary order-submit" type="submit">Продолжить</button>
+          <p class="order-note">Демо-заказ: продавец не получит заявку.</p>
+        </form>
+        <p class="order-status" id="order-status" role="status" aria-live="polite"></p>
       </div>
     </dialog>
 
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="assets/js/app.js?v=catalog-ui"></script>
   </body>
 </html>
