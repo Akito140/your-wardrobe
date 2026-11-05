@@ -7,9 +7,14 @@
     burgundy: { name: 'Городской гранж', description: 'Бордовый · деним · детали', image: 'burgundy-street.png', top: '#7d2838', layer: '#64212d', bottom: '#292832', shoes: '#17171b', accent: '#c6a9c5' },
     monochrome: { name: 'Тихая классика', description: 'Монохром · мягкий слой', image: 'monochrome-classic.png', top: '#17171b', layer: '#44464e', bottom: '#292a31', shoes: '#17171b', accent: '#b9b8c2' },
     noir: { name: 'После полуночи', description: 'Чёрный · фактуры · кожа', image: 'black-editorial.png', top: '#17171b', layer: '#222329', bottom: '#29292e', shoes: '#151519', accent: '#85808f' },
-    sport: { name: 'Уличный комфорт', description: 'Спорт · карго · кеды', image: 'sport-urban.png', top: '#202126', layer: '#343a42', bottom: '#282a2f', shoes: '#eeeae3', accent: '#aeb6ba' }
+    sport: { name: 'Уличный комфорт', description: 'Спорт · карго · кеды', image: 'sport-urban.png', top: '#202126', layer: '#343a42', bottom: '#282a2f', shoes: '#eeeae3', accent: '#aeb6ba' },
+    burgundyCoat: { name: 'Бордовая классика', description: 'Пальто · льняная рубашка · галстук · серые брюки', image: 'burgundy-coat-set.jpg', resultImage: 'burgundy-coat-result.jpg', top: '#e5d8c2', layer: '#571b2c', bottom: '#68686b', shoes: '#1d1b1b', accent: '#3b302f' }
   };
   const PRODUCTS = [
+    { id: 'coat-burgundy', name: 'Бордовое пальто', image: 'coat-burgundy.jpg', category: 'outerwear', categoryLabel: 'Верхняя одежда', price: 12500, material: 'Шерстяная смесовая ткань · описание-пример', fit: 'Прямой двубортный крой, длина миди', seller: 'Демо-бутик «Север»', email: 'sever@example.com', sizes: ['S', 'M', 'L', 'XL'], colors: [{ name: 'Бордовый', value: '#571b2c' }] },
+    { id: 'shirt-beige', name: 'Льняная рубашка', image: 'shirt-beige.jpg', category: 'tops', categoryLabel: 'Верх', price: 3900, material: 'Лён · описание-пример', fit: 'Свободный прямой крой', seller: 'Демо-бутик «Север»', email: 'sever@example.com', sizes: ['S', 'M', 'L', 'XL'], colors: [{ name: 'Песочный', value: '#c6b89e' }] },
+    { id: 'pants-gray', name: 'Серые классические брюки', image: 'pants-gray.jpg', category: 'bottoms', categoryLabel: 'Брюки', price: 5600, material: 'Костюмная смесовая ткань · описание-пример', fit: 'Прямые, со стрелками', seller: 'Демо-бутик «Север»', email: 'sever@example.com', sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: [{ name: 'Серый', value: '#6f7072' }] },
+    { id: 'tie-brown', name: 'Коричневый галстук', image: 'tie-brown.jpg', category: 'accessories', categoryLabel: 'Аксессуары', price: 1800, material: 'Текстиль · описание-пример', fit: 'Классическая ширина', seller: 'Демо-бутик «Север»', email: 'sever@example.com', sizes: ['Универсальный'], colors: [{ name: 'Полосатый шоколадный', value: '#593c30' }, { name: 'Тёмно-коричневый', value: '#41221f' }] },
     { id: 'shirt-burgundy', name: 'Бордовая рубашка', image: 'shirt-burgundy.png', category: 'tops', categoryLabel: 'Верх', price: 2900, material: 'Хлопок и вискоза · описание-пример', fit: 'Свободный, длинный рукав', seller: 'Бутик «Линия» · демо', email: 'line@example.com', sizes: ['S', 'M', 'L', 'XL'], colors: [{ name: 'Бордовый', value: '#762b3a' }, { name: 'Чёрный', value: '#27262b' }] },
     { id: 'shirt-black', name: 'Чёрная рубашка', image: 'shirt-black.png', category: 'tops', categoryLabel: 'Верх', price: 2600, material: 'Хлопок · описание-пример', fit: 'Прямой, слегка свободный', seller: 'Демо-магазин «Forma»', email: 'forma@example.com', sizes: ['S', 'M', 'L', 'XL'], colors: [{ name: 'Чёрный', value: '#232329' }, { name: 'Белый', value: '#efede8' }] },
     { id: 'sweater-black', name: 'Чёрный свитер', image: 'sweater-black.png', category: 'tops', categoryLabel: 'Верх', price: 3400, material: 'Шерсть и акрил · описание-пример', fit: 'Расслабленный, круглый вырез', seller: 'Бутик «Линия» · демо', email: 'line@example.com', sizes: ['XS', 'S', 'M', 'L'], colors: [{ name: 'Чёрный', value: '#242329' }, { name: 'Серый', value: '#aaa8ae' }] },
@@ -242,25 +247,18 @@
   const modal = $('#tryon-dialog');
   if (modal) {
     const avatar = $('#tryon-avatar');
+    const result = $('#tryon-result');
+    const resultImage = $('#tryon-result-image');
+    const resultCaption = $('#tryon-result-caption');
     const title = $('#tryon-look-name');
     const photoInput = $('#tryon-photo');
     const photoPreview = $('#tryon-photo-preview');
     const photoStatus = $('#tryon-photo-status');
+    const generateButton = $('#simulate-tryon');
+    const generateButtonLabel = generateButton.textContent;
     let selectedPhotoUrl = '';
-    const showSessionPhoto = () => {
-      try {
-        const savedPhoto = sessionStorage.getItem('yw_demo_photo');
-        if (savedPhoto) {
-          photoPreview.src = savedPhoto;
-          photoPreview.hidden = false;
-          photoStatus.textContent = 'Твоё фото только для просмотра в этой вкладке. Это демо не отправляет и не переодевает его.';
-        } else {
-          photoStatus.textContent = 'Фото останется только в этой вкладке браузера и не отправится на сервер.';
-        }
-      } catch (error) {
-        console.error('Could not load session photo for demo try-on.', error);
-      }
-    };
+    let activeLook;
+    let generationTimer;
 
     const drawAvatar = look => {
       avatar.innerHTML = `<svg viewBox="0 0 240 360" role="img" aria-label="Иллюстрация человека в образе «${look.name}»">
@@ -277,13 +275,34 @@
       </svg>`;
     };
 
+    const resetTryOn = () => {
+      window.clearTimeout(generationTimer);
+      generationTimer = undefined;
+      if (selectedPhotoUrl) URL.revokeObjectURL(selectedPhotoUrl);
+      selectedPhotoUrl = '';
+      activeLook = undefined;
+      photoInput.value = '';
+      photoPreview.removeAttribute('src');
+      photoPreview.hidden = true;
+      result.hidden = true;
+      resultImage.hidden = true;
+      resultImage.removeAttribute('src');
+      avatar.hidden = true;
+      avatar.replaceChildren();
+      generateButton.disabled = true;
+      generateButton.removeAttribute('aria-busy');
+      generateButton.textContent = generateButtonLabel;
+      photoStatus.textContent = 'Добавь фото, чтобы показать сценарий демо-примерки.';
+      resultCaption.textContent = '';
+    };
+
     const openTryOn = id => {
       const look = LOOKS[id];
       if (!look) return;
-      title.textContent = look.name;
-      drawAvatar(look);
-      showSessionPhoto();
       if (modal.open) modal.close();
+      resetTryOn();
+      activeLook = look;
+      title.textContent = look.name;
       modal.showModal();
     };
 
@@ -292,29 +311,70 @@
     modal.addEventListener('click', event => {
       if (event.target === modal) modal.close();
     });
-    modal.addEventListener('close', () => {
-      if (selectedPhotoUrl) URL.revokeObjectURL(selectedPhotoUrl);
-      selectedPhotoUrl = '';
-      photoInput.value = '';
-      photoPreview.removeAttribute('src');
-      photoPreview.hidden = true;
-      photoStatus.textContent = 'Фото останется только в этой вкладке браузера и не отправится на сервер.';
-    });
+    modal.addEventListener('close', resetTryOn);
 
     if (photoInput) photoInput.addEventListener('change', () => {
       const file = photoInput.files?.[0];
-      const status = $('#tryon-photo-status');
-      if (!file) return;
+      if (!file) {
+        generateButton.disabled = true;
+        return;
+      }
       if (!file.type.startsWith('image/') || file.size > 5 * 1024 * 1024) {
-        status.textContent = 'Выбери изображение размером до 5 МБ.';
+        if (selectedPhotoUrl) URL.revokeObjectURL(selectedPhotoUrl);
+        selectedPhotoUrl = '';
+        photoPreview.removeAttribute('src');
+        photoPreview.hidden = true;
+        result.hidden = true;
+        photoStatus.textContent = 'Выбери изображение размером до 5 МБ.';
         photoInput.value = '';
+        generateButton.disabled = true;
         return;
       }
       if (selectedPhotoUrl) URL.revokeObjectURL(selectedPhotoUrl);
       selectedPhotoUrl = URL.createObjectURL(file);
       photoPreview.src = selectedPhotoUrl;
       photoPreview.hidden = false;
-      status.textContent = 'Фото показано только здесь. Эта демо-функция не отправляет его и не меняет одежду на снимке.';
+      result.hidden = true;
+      generateButton.disabled = false;
+      photoStatus.textContent = `Фото «${file.name}» выбрано. Оно останется в этой вкладке и не отправится на сервер.`;
+    });
+
+    generateButton.addEventListener('click', () => {
+      if (!activeLook || !selectedPhotoUrl || generateButton.disabled) return;
+      result.hidden = true;
+      generateButton.disabled = true;
+      generateButton.setAttribute('aria-busy', 'true');
+      generateButton.textContent = 'Готовим демо-результат…';
+      photoStatus.textContent = 'Симулируем генерацию образа…';
+      generationTimer = window.setTimeout(() => {
+        if (activeLook.resultImage) {
+          resultImage.src = `assets/images/looks/${activeLook.resultImage}`;
+          resultImage.alt = `Подготовленный результат: модель в образе «${activeLook.name}»`;
+          resultImage.hidden = false;
+          avatar.hidden = true;
+          resultCaption.textContent = 'Заранее подготовленное фото этого образа. Загруженный снимок не изменяется и не влияет на результат.';
+        } else {
+          drawAvatar(activeLook);
+          avatar.hidden = false;
+          resultImage.hidden = true;
+          resultCaption.textContent = 'Иллюстрация-схема подобрана для этого образа. Загруженный снимок не изменяется и не влияет на результат.';
+        }
+        result.hidden = false;
+        generateButton.disabled = false;
+        generateButton.removeAttribute('aria-busy');
+        generateButton.textContent = 'Сгенерировать ещё раз';
+        photoStatus.textContent = 'Демо-результат готов. Фото не отправлялось и не использовалось для генерации.';
+      }, 1100);
+    });
+
+    resultImage.addEventListener('error', () => {
+      result.hidden = true;
+      resultImage.hidden = true;
+      generateButton.disabled = false;
+      generateButton.removeAttribute('aria-busy');
+      generateButton.textContent = 'Попробовать ещё раз';
+      photoStatus.textContent = 'Не удалось загрузить подготовленный результат. Попробуй ещё раз.';
+      console.error(`Could not load demo try-on result for "${activeLook?.name}".`);
     });
 
     const requestedLook = new URLSearchParams(location.search).get('tryon');

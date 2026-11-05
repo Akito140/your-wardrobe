@@ -619,6 +619,9 @@ body.app-page {
 .tryon-avatar { display: grid; width: 100%; height: 280px; place-items: center; }
 .tryon-avatar svg { display: block; width: auto; max-width: 100%; height: 100%; }
 .tryon-preview > p { margin: -.1rem 0 .3rem; color: #77717f; font-size: .66rem; }
+.tryon-preview[hidden], .tryon-avatar[hidden], .tryon-result-image[hidden] { display: none; }
+.tryon-result-image { display: block; width: 100%; height: min(58dvh, 500px); border-radius: 16px; background: #f3f1f5; object-fit: contain; }
+.tryon-preview #tryon-result-caption { margin: .55rem .25rem .25rem; text-align: center; }
 .tryon-result-note {
   display: flex;
   gap: .6rem;
@@ -654,12 +657,18 @@ body.app-page {
 .tryon-photo-control > p { margin: 0; color: #888290; font-size: .63rem; text-align: center; }
 #tryon-photo-preview {
   width: 100%;
-  max-height: 200px;
+  max-height: 150px;
   border-radius: 16px;
   object-fit: contain;
   background: #eeebf3;
 }
-.tryon-done { width: 100%; min-height: 2.85rem; margin-top: .75rem; }
+.tryon-generate, .tryon-done { width: 100%; min-height: 2.85rem; margin-top: .75rem; }
+.tryon-generate[aria-busy="true"] { display: flex; align-items: center; justify-content: center; gap: .55rem; }
+.tryon-generate[aria-busy="true"]::before { width: 1rem; height: 1rem; border: 2px solid rgba(255,255,255,.45); border-top-color: #fff; border-radius: 50%; content: ""; animation: tryon-spin .7s linear infinite; }
+@keyframes tryon-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .tryon-generate[aria-busy="true"]::before { animation-duration: 1.8s; }
+}
 .profile-card { padding: 1.15rem; border: 1px solid var(--line); border-radius: 22px; background: #fff; }
 .profile-card + .profile-card { margin-top: .9rem; }
 .profile-card h2 { margin: 0 0 .85rem; font-family: 'Golos Text', system-ui, sans-serif; font-size: 1rem; font-weight: 700; }
