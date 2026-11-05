@@ -128,7 +128,37 @@ if (hero) {
 /* ---------- Wardrobe ---------- */
 const wg = $('#wgrid');
 if (wg) {
-  const items = ITEMS.map(i => ({ ...i }));
+  const storageKey = 'yw_wardrobe_items';
+  const storageStatus = $('#w-storage-status');
+  const validItem = item => item && typeof item.id === 'string' && typeof item.name === 'string' && item.name.trim() &&
+    Object.hasOwn(CATS, item.cat) && /^#[\da-f]{6}$/i.test(item.color) &&
+    ['весна', 'лето', 'осень', 'зима', 'всесезон'].includes(item.season);
+  const loadItems = () => {
+    try {
+      const saved = localStorage.getItem(storageKey);
+      if (saved === null) return ITEMS.map(i => ({ ...i }));
+      const parsed = JSON.parse(saved);
+      if (!Array.isArray(parsed) || !parsed.every(validItem)) throw new Error('Invalid saved wardrobe data');
+      return parsed;
+    } catch (error) {
+      storageStatus.textContent = 'Не удалось прочитать сохранённый гардероб. Показаны стандартные вещи.';
+      console.error('Unable to load saved wardrobe.', error);
+      return ITEMS.map(i => ({ ...i }));
+    }
+  };
+  const items = loadItems();
+  const saveItems = () => {
+    try {
+      const saved = items.map(({ id, name, cat, color, season }) => ({ id, name, cat, color, season }));
+      localStorage.setItem(storageKey, JSON.stringify(saved));
+      storageStatus.textContent = '';
+      return true;
+    } catch (error) {
+      storageStatus.textContent = 'Не удалось сохранить гардероб на этом устройстве.';
+      console.error('Unable to save wardrobe.', error);
+      return false;
+    }
+  };
   const q = $('#wq'), fc = $('#wcat'), fs = $('#wseason'), empty = $('#wempty'), count = $('#wcount');
   const draw = () => {
     const t = q.value.trim().toLowerCase();
@@ -139,11 +169,21 @@ if (wg) {
     count.textContent = `Показано ${list.length} из ${items.length}`;
   };
   [q, fc, fs].forEach(el => el.addEventListener('input', draw));
-  wg.addEventListener('click', e => { const b = e.target.closest('[data-del]'); if (b) { const i = items.findIndex(x => x.id === b.dataset.del); items.splice(i, 1); draw(); $('#wq').focus(); } });
+  wg.addEventListener('click', e => {
+    const b = e.target.closest('[data-del]');
+    if (!b) return;
+    const i = items.findIndex(x => x.id === b.dataset.del);
+    if (i < 0) return;
+    items.splice(i, 1);
+    saveItems();
+    draw();
+    q.focus();
+  });
   const form = $('#add-form');
   form._onValid = f => {
     const d = new FormData(f), file = f.elements.photo.files[0];
     items.unshift({ id: 'u' + Date.now(), name: d.get('name').trim(), cat: d.get('cat'), color: d.get('color'), season: d.get('season') || 'всесезон', img: file ? URL.createObjectURL(file) : '' });
+    saveItems();
     draw();
   };
   draw();

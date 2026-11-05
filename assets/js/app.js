@@ -8,22 +8,25 @@
     monochrome: { name: 'Тихая классика', description: 'Монохром · мягкий слой', image: 'monochrome-classic.png', top: '#17171b', layer: '#44464e', bottom: '#292a31', shoes: '#17171b', accent: '#b9b8c2' },
     noir: { name: 'После полуночи', description: 'Чёрный · фактуры · кожа', image: 'black-editorial.png', top: '#17171b', layer: '#222329', bottom: '#29292e', shoes: '#151519', accent: '#85808f' },
     sport: { name: 'Уличный комфорт', description: 'Спорт · карго · кеды', image: 'sport-urban.png', top: '#202126', layer: '#343a42', bottom: '#282a2f', shoes: '#eeeae3', accent: '#aeb6ba' },
-    burgundyCoat: { name: 'Бордовая классика', description: 'Пальто · льняная рубашка · галстук · серые брюки', image: 'burgundy-coat-set.jpg', resultImage: 'burgundy-coat-result.jpg', top: '#e5d8c2', layer: '#571b2c', bottom: '#68686b', shoes: '#1d1b1b', accent: '#3b302f' }
+    burgundyCoat: { name: 'Бордовая классика', description: 'Пальто · льняная рубашка · галстук · серые брюки', image: 'burgundy-coat-set.jpg', resultImage: 'burgundy-coat-result.jpg', top: '#e5d8c2', layer: '#571b2c', bottom: '#68686b', shoes: '#1d1b1b', accent: '#3b302f' },
+    burgundyStreet: { name: 'Бордовый стрит', description: 'Бордовая рубашка · чёрный деним · аксессуары', image: 'look-burgundy-street.jpg', resultImage: 'look-burgundy-street.jpg', top: '#702d3b', layer: '#702d3b', bottom: '#29272a', shoes: '#17171b', accent: '#c6a9c5' },
+    noirTailored: { name: 'Тёмная классика', description: 'Чёрная рубашка · брюки в полоску', image: 'look-noir-tailored.jpg', resultImage: 'look-noir-tailored.jpg', top: '#17171b', layer: '#17171b', bottom: '#292832', shoes: '#17171b', accent: '#b9b8c2' },
+    sportUtility: { name: 'Городской спорт', description: 'Куртка с акцентными линиями · карго · кеды', image: 'look-sport-utility.jpg', resultImage: 'look-sport-utility.jpg', top: '#202126', layer: '#343a42', bottom: '#282a2f', shoes: '#17171b', accent: '#aeb6ba' }
   };
   const PRODUCTS = [
-    { id: 'coat-burgundy', name: 'Бордовое пальто', image: 'coat-burgundy.jpg', category: 'outerwear', categoryLabel: 'Верхняя одежда', price: 12500, material: 'Шерстяная смесовая ткань · описание-пример', fit: 'Прямой двубортный крой, длина миди', seller: 'Демо-бутик «Север»', email: 'sever@example.com', sizes: ['S', 'M', 'L', 'XL'], colors: [{ name: 'Бордовый', value: '#571b2c' }] },
-    { id: 'shirt-beige', name: 'Льняная рубашка', image: 'shirt-beige.jpg', category: 'tops', categoryLabel: 'Верх', price: 3900, material: 'Лён · описание-пример', fit: 'Свободный прямой крой', seller: 'Демо-бутик «Север»', email: 'sever@example.com', sizes: ['S', 'M', 'L', 'XL'], colors: [{ name: 'Песочный', value: '#c6b89e' }] },
-    { id: 'pants-gray', name: 'Серые классические брюки', image: 'pants-gray.jpg', category: 'bottoms', categoryLabel: 'Брюки', price: 5600, material: 'Костюмная смесовая ткань · описание-пример', fit: 'Прямые, со стрелками', seller: 'Демо-бутик «Север»', email: 'sever@example.com', sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: [{ name: 'Серый', value: '#6f7072' }] },
-    { id: 'tie-brown', name: 'Коричневый галстук', image: 'tie-brown.jpg', category: 'accessories', categoryLabel: 'Аксессуары', price: 1800, material: 'Текстиль · описание-пример', fit: 'Классическая ширина', seller: 'Демо-бутик «Север»', email: 'sever@example.com', sizes: ['Универсальный'], colors: [{ name: 'Полосатый шоколадный', value: '#593c30' }, { name: 'Тёмно-коричневый', value: '#41221f' }] },
-    { id: 'shirt-burgundy', name: 'Бордовая рубашка', image: 'shirt-burgundy.png', category: 'tops', categoryLabel: 'Верх', price: 2900, material: 'Хлопок и вискоза · описание-пример', fit: 'Свободный, длинный рукав', seller: 'Бутик «Линия» · демо', email: 'line@example.com', sizes: ['S', 'M', 'L', 'XL'], colors: [{ name: 'Бордовый', value: '#762b3a' }, { name: 'Чёрный', value: '#27262b' }] },
-    { id: 'shirt-black', name: 'Чёрная рубашка', image: 'shirt-black.png', category: 'tops', categoryLabel: 'Верх', price: 2600, material: 'Хлопок · описание-пример', fit: 'Прямой, слегка свободный', seller: 'Демо-магазин «Forma»', email: 'forma@example.com', sizes: ['S', 'M', 'L', 'XL'], colors: [{ name: 'Чёрный', value: '#232329' }, { name: 'Белый', value: '#efede8' }] },
-    { id: 'sweater-black', name: 'Чёрный свитер', image: 'sweater-black.png', category: 'tops', categoryLabel: 'Верх', price: 3400, material: 'Шерсть и акрил · описание-пример', fit: 'Расслабленный, круглый вырез', seller: 'Бутик «Линия» · демо', email: 'line@example.com', sizes: ['XS', 'S', 'M', 'L'], colors: [{ name: 'Чёрный', value: '#242329' }, { name: 'Серый', value: '#aaa8ae' }] },
-    { id: 'jacket-black', name: 'Городская куртка', image: 'jacket-black.png', category: 'outerwear', categoryLabel: 'Верхняя одежда', price: 5200, material: 'Полиэстер · описание-пример', fit: 'Свободный, воротник-стойка', seller: 'Демо-маркетплейс «Стилист»', email: 'market@example.com', sizes: ['S', 'M', 'L', 'XL'], colors: [{ name: 'Чёрный', value: '#24242a' }, { name: 'Графит', value: '#55565c' }] },
-    { id: 'blazer-check', name: 'Клетчатый жакет', image: 'blazer-check.png', category: 'outerwear', categoryLabel: 'Верхняя одежда', price: 6100, material: 'Смесовая ткань · описание-пример', fit: 'Прямой, немного oversize', seller: 'Демо-бутик «Север»', email: 'sever@example.com', sizes: ['S', 'M', 'L'], colors: [{ name: 'Серо-чёрная клетка', value: '#44434a' }] },
-    { id: 'pants-cargo', name: 'Брюки-карго', image: 'pants-cargo.png', category: 'bottoms', categoryLabel: 'Брюки', price: 4400, material: 'Хлопковый твил · описание-пример', fit: 'Свободный, прямые штанины', seller: 'Демо-магазин «Forma»', email: 'forma@example.com', sizes: ['S', 'M', 'L', 'XL'], colors: [{ name: 'Чёрный', value: '#202126' }, { name: 'Оливковый', value: '#59634b' }] },
-    { id: 'pants-pinstripe', name: 'Брюки в тонкую полоску', image: 'pants-pinstripe.png', category: 'bottoms', categoryLabel: 'Брюки', price: 3900, material: 'Вискоза и полиэстер · описание-пример', fit: 'Высокая посадка, прямой крой', seller: 'Демо-бутик «Север»', email: 'sever@example.com', sizes: ['XS', 'S', 'M', 'L'], colors: [{ name: 'Чёрный', value: '#25252a' }] },
-    { id: 'sneakers-high', name: 'Высокие кеды', image: 'sneakers-high.png', category: 'shoes', categoryLabel: 'Обувь', price: 3800, material: 'Текстиль и резина · описание-пример', fit: 'Высокая шнуровка', seller: 'Демо-маркетплейс «Стилист»', email: 'market@example.com', sizes: ['37', '38', '39', '40', '41', '42', '43'], colors: [{ name: 'Чёрно-белый', value: '#34343a' }] },
-    { id: 'boots-black', name: 'Чёрные ботинки', image: 'boots-black.png', category: 'shoes', categoryLabel: 'Обувь', price: 6900, material: 'Искусственная кожа · описание-пример', fit: 'На шнуровке, массивная подошва', seller: 'Бутик «Линия» · демо', email: 'line@example.com', sizes: ['37', '38', '39', '40', '41', '42'], colors: [{ name: 'Чёрный', value: '#202024' }] }
+    { id: 'coat-burgundy', name: 'Бордовое пальто', image: 'coat-burgundy.jpg', category: 'outerwear', categoryLabel: 'Верхняя одежда', price: 12500, material: 'Шерстяная смесовая ткань', fit: 'Прямой двубортный крой, длина миди', seller: 'Бутик «Север»', email: 'sever@example.com', sizes: ['S', 'M', 'L', 'XL'], colors: [{ name: 'Бордовый', value: '#571b2c' }] },
+    { id: 'shirt-beige', name: 'Льняная рубашка', image: 'shirt-beige.jpg', category: 'tops', categoryLabel: 'Верх', price: 3900, material: 'Лён', fit: 'Свободный прямой крой', seller: 'Бутик «Север»', email: 'sever@example.com', sizes: ['S', 'M', 'L', 'XL'], colors: [{ name: 'Песочный', value: '#c6b89e' }] },
+    { id: 'pants-gray', name: 'Серые классические брюки', image: 'pants-gray.jpg', category: 'bottoms', categoryLabel: 'Брюки', price: 5600, material: 'Костюмная смесовая ткань', fit: 'Прямые, со стрелками', seller: 'Бутик «Север»', email: 'sever@example.com', sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: [{ name: 'Серый', value: '#6f7072' }] },
+    { id: 'tie-brown', name: 'Коричневый галстук', image: 'tie-brown.jpg', category: 'accessories', categoryLabel: 'Аксессуары', price: 1800, material: 'Текстиль', fit: 'Классическая ширина', seller: 'Бутик «Север»', email: 'sever@example.com', sizes: ['Универсальный'], colors: [{ name: 'Полосатый шоколадный', value: '#593c30' }, { name: 'Тёмно-коричневый', value: '#41221f' }] },
+    { id: 'shirt-burgundy', name: 'Бордовая рубашка', image: 'shirt-burgundy.png', category: 'tops', categoryLabel: 'Верх', price: 2900, material: 'Хлопок и вискоза', fit: 'Свободный, длинный рукав', seller: 'Бутик «Линия»', email: 'line@example.com', sizes: ['S', 'M', 'L', 'XL'], colors: [{ name: 'Бордовый', value: '#762b3a' }, { name: 'Чёрный', value: '#27262b' }] },
+    { id: 'shirt-black', name: 'Чёрная рубашка', image: 'shirt-black.png', category: 'tops', categoryLabel: 'Верх', price: 2600, material: 'Хлопок', fit: 'Прямой, слегка свободный', seller: 'Магазин «Forma»', email: 'forma@example.com', sizes: ['S', 'M', 'L', 'XL'], colors: [{ name: 'Чёрный', value: '#232329' }, { name: 'Белый', value: '#efede8' }] },
+    { id: 'sweater-black', name: 'Чёрный свитер', image: 'sweater-black.png', category: 'tops', categoryLabel: 'Верх', price: 3400, material: 'Шерсть и акрил', fit: 'Расслабленный, круглый вырез', seller: 'Бутик «Линия»', email: 'line@example.com', sizes: ['XS', 'S', 'M', 'L'], colors: [{ name: 'Чёрный', value: '#242329' }, { name: 'Серый', value: '#aaa8ae' }] },
+    { id: 'jacket-black', name: 'Городская куртка', image: 'jacket-black.png', category: 'outerwear', categoryLabel: 'Верхняя одежда', price: 5200, material: 'Полиэстер', fit: 'Свободный, воротник-стойка', seller: 'Маркетплейс «Стилист»', email: 'market@example.com', sizes: ['S', 'M', 'L', 'XL'], colors: [{ name: 'Чёрный', value: '#24242a' }, { name: 'Графит', value: '#55565c' }] },
+    { id: 'blazer-check', name: 'Клетчатый жакет', image: 'blazer-check.png', category: 'outerwear', categoryLabel: 'Верхняя одежда', price: 6100, material: 'Смесовая ткань', fit: 'Прямой, немного oversize', seller: 'Бутик «Север»', email: 'sever@example.com', sizes: ['S', 'M', 'L'], colors: [{ name: 'Серо-чёрная клетка', value: '#44434a' }] },
+    { id: 'pants-cargo', name: 'Брюки-карго', image: 'pants-cargo.png', category: 'bottoms', categoryLabel: 'Брюки', price: 4400, material: 'Хлопковый твил', fit: 'Свободный, прямые штанины', seller: 'Магазин «Forma»', email: 'forma@example.com', sizes: ['S', 'M', 'L', 'XL'], colors: [{ name: 'Чёрный', value: '#202126' }, { name: 'Оливковый', value: '#59634b' }] },
+    { id: 'pants-pinstripe', name: 'Брюки в тонкую полоску', image: 'pants-pinstripe.png', category: 'bottoms', categoryLabel: 'Брюки', price: 3900, material: 'Вискоза и полиэстер', fit: 'Высокая посадка, прямой крой', seller: 'Бутик «Север»', email: 'sever@example.com', sizes: ['XS', 'S', 'M', 'L'], colors: [{ name: 'Чёрный', value: '#25252a' }] },
+    { id: 'sneakers-high', name: 'Высокие кеды', image: 'sneakers-high.png', category: 'shoes', categoryLabel: 'Обувь', price: 3800, material: 'Текстиль и резина', fit: 'Высокая шнуровка', seller: 'Маркетплейс «Стилист»', email: 'market@example.com', sizes: ['37', '38', '39', '40', '41', '42', '43'], colors: [{ name: 'Чёрно-белый', value: '#34343a' }] },
+    { id: 'boots-black', name: 'Чёрные ботинки', image: 'boots-black.png', category: 'shoes', categoryLabel: 'Обувь', price: 6900, material: 'Искусственная кожа', fit: 'На шнуровке, массивная подошва', seller: 'Бутик «Линия»', email: 'line@example.com', sizes: ['37', '38', '39', '40', '41', '42'], colors: [{ name: 'Чёрный', value: '#202024' }] }
   ];
 
   const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
@@ -51,7 +54,6 @@
         && `${product.name} ${product.categoryLabel} ${product.seller}`.toLocaleLowerCase('ru').includes(query));
       productGrid.innerHTML = products.map(product => `<article class="product-card">
         <button class="product-image-button" type="button" data-product="${product.id}" aria-label="Подробнее: ${escapeHtml(product.name)}">
-          <span class="product-demo-tag">ДЕМО</span>
           <img src="assets/images/products/${product.image}" alt="${escapeHtml(product.name)}" loading="lazy">
         </button>
         <div class="product-card-info">
@@ -89,13 +91,13 @@
       $('#product-title').textContent = selectedProduct.name;
       $('#product-detail-image').src = `assets/images/products/${selectedProduct.image}`;
       $('#product-detail-image').alt = selectedProduct.name;
-      $('#product-detail-price').textContent = `${selectedProduct.price.toLocaleString('ru-RU')} сом · цена-пример`;
+      $('#product-detail-price').textContent = `${selectedProduct.price.toLocaleString('ru-RU')} сом`;
       $('#product-material').textContent = selectedProduct.material;
       $('#product-fit').textContent = selectedProduct.fit;
       $('#product-seller').textContent = selectedProduct.seller;
       const contact = $('#product-contact');
       contact.href = `mailto:${selectedProduct.email}`;
-      contact.textContent = `${selectedProduct.email} · демо-контакт`;
+      contact.textContent = selectedProduct.email;
       $('#order-size').innerHTML = `<option value="">Выбери размер</option>${selectedProduct.sizes.map(size => `<option value="${escapeHtml(size)}">${escapeHtml(size)}</option>`).join('')}`;
       $('#order-colors').innerHTML = selectedProduct.colors.map((color, index) => `<label class="color-choice">
         <input type="radio" name="product-color" value="${escapeHtml(color.name)}" ${index === 0 ? 'checked' : ''}>
@@ -130,7 +132,7 @@
         $('#order-size').reportValidity();
         return;
       }
-      $('#order-status').textContent = `Демо: выбран ${selectedProduct.name}, размер ${size}, цвет «${selectedColor}». Заказ не отправлен продавцу.`;
+      $('#order-status').textContent = `${selectedProduct.name}: размер ${size}, цвет «${selectedColor}».`;
       orderForm.hidden = true;
       $('#order-start').hidden = false;
     });
@@ -292,7 +294,7 @@
       generateButton.disabled = true;
       generateButton.removeAttribute('aria-busy');
       generateButton.textContent = generateButtonLabel;
-      photoStatus.textContent = 'Добавь фото, чтобы показать сценарий демо-примерки.';
+      photoStatus.textContent = 'Добавь фото человека.';
       resultCaption.textContent = '';
     };
 
@@ -336,7 +338,7 @@
       photoPreview.hidden = false;
       result.hidden = true;
       generateButton.disabled = false;
-      photoStatus.textContent = `Фото «${file.name}» выбрано. Оно останется в этой вкладке и не отправится на сервер.`;
+      photoStatus.textContent = `Фото выбрано: ${file.name}`;
     });
 
     generateButton.addEventListener('click', () => {
@@ -344,26 +346,26 @@
       result.hidden = true;
       generateButton.disabled = true;
       generateButton.setAttribute('aria-busy', 'true');
-      generateButton.textContent = 'Готовим демо-результат…';
-      photoStatus.textContent = 'Симулируем генерацию образа…';
+      generateButton.textContent = 'Собираем образ…';
+      photoStatus.textContent = 'Подбираем образ…';
       generationTimer = window.setTimeout(() => {
         if (activeLook.resultImage) {
           resultImage.src = `assets/images/looks/${activeLook.resultImage}`;
           resultImage.alt = `Подготовленный результат: модель в образе «${activeLook.name}»`;
           resultImage.hidden = false;
           avatar.hidden = true;
-          resultCaption.textContent = 'Заранее подготовленное фото этого образа. Загруженный снимок не изменяется и не влияет на результат.';
+          resultCaption.textContent = activeLook.name;
         } else {
           drawAvatar(activeLook);
           avatar.hidden = false;
           resultImage.hidden = true;
-          resultCaption.textContent = 'Иллюстрация-схема подобрана для этого образа. Загруженный снимок не изменяется и не влияет на результат.';
+          resultCaption.textContent = activeLook.name;
         }
         result.hidden = false;
         generateButton.disabled = false;
         generateButton.removeAttribute('aria-busy');
         generateButton.textContent = 'Сгенерировать ещё раз';
-        photoStatus.textContent = 'Демо-результат готов. Фото не отправлялось и не использовалось для генерации.';
+        photoStatus.textContent = 'Образ готов';
       }, 1100);
     });
 
@@ -456,7 +458,7 @@
         });
         sessionStorage.setItem('yw_demo_photo', dataUrl);
         showPhoto(dataUrl);
-        photoStatus.textContent = 'Фото доступно в этой вкладке браузера и не отправляется.';
+        photoStatus.textContent = 'Фото добавлено.';
       } catch (error) {
         photoStatus.textContent = 'Фото не удалось подготовить. Попробуй другое изображение.';
         console.error('Could not prepare profile photo.', error);
