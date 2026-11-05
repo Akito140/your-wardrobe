@@ -4,14 +4,11 @@
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
   const LOOKS = {
-    burgundy: { name: 'Городской гранж', description: 'Бордовый · деним · детали', image: 'burgundy-street.png', top: '#7d2838', layer: '#64212d', bottom: '#292832', shoes: '#17171b', accent: '#c6a9c5' },
+    burgundy: { name: 'Городской гранж', description: 'Бордовый · деним · детали', image: 'burgundy-street.png', resultImage: 'look-burgundy-street.jpg', top: '#7d2838', layer: '#64212d', bottom: '#292832', shoes: '#17171b', accent: '#c6a9c5' },
     monochrome: { name: 'Тихая классика', description: 'Монохром · мягкий слой', image: 'monochrome-classic.png', top: '#17171b', layer: '#44464e', bottom: '#292a31', shoes: '#17171b', accent: '#b9b8c2' },
-    noir: { name: 'После полуночи', description: 'Чёрный · фактуры · кожа', image: 'black-editorial.png', top: '#17171b', layer: '#222329', bottom: '#29292e', shoes: '#151519', accent: '#85808f' },
-    sport: { name: 'Уличный комфорт', description: 'Спорт · карго · кеды', image: 'sport-urban.png', top: '#202126', layer: '#343a42', bottom: '#282a2f', shoes: '#eeeae3', accent: '#aeb6ba' },
-    burgundyCoat: { name: 'Бордовая классика', description: 'Пальто · льняная рубашка · галстук · серые брюки', image: 'burgundy-coat-set.jpg', resultImage: 'burgundy-coat-result.jpg', top: '#e5d8c2', layer: '#571b2c', bottom: '#68686b', shoes: '#1d1b1b', accent: '#3b302f' },
-    burgundyStreet: { name: 'Бордовый стрит', description: 'Бордовая рубашка · чёрный деним · аксессуары', image: 'look-burgundy-street.jpg', resultImage: 'look-burgundy-street.jpg', top: '#702d3b', layer: '#702d3b', bottom: '#29272a', shoes: '#17171b', accent: '#c6a9c5' },
-    noirTailored: { name: 'Тёмная классика', description: 'Чёрная рубашка · брюки в полоску', image: 'look-noir-tailored.jpg', resultImage: 'look-noir-tailored.jpg', top: '#17171b', layer: '#17171b', bottom: '#292832', shoes: '#17171b', accent: '#b9b8c2' },
-    sportUtility: { name: 'Городской спорт', description: 'Куртка с акцентными линиями · карго · кеды', image: 'look-sport-utility.jpg', resultImage: 'look-sport-utility.jpg', top: '#202126', layer: '#343a42', bottom: '#282a2f', shoes: '#17171b', accent: '#aeb6ba' }
+    noir: { name: 'После полуночи', description: 'Чёрный · фактуры · кожа', image: 'black-editorial.png', resultImage: 'look-noir-tailored.jpg', top: '#17171b', layer: '#222329', bottom: '#29292e', shoes: '#151519', accent: '#85808f' },
+    sport: { name: 'Уличный комфорт', description: 'Спорт · карго · кеды', image: 'sport-urban.png', resultImage: 'look-sport-utility.jpg', top: '#202126', layer: '#343a42', bottom: '#282a2f', shoes: '#eeeae3', accent: '#aeb6ba' },
+    burgundyCoat: { name: 'Бордовая классика', description: 'Пальто · льняная рубашка · галстук · серые брюки', image: 'burgundy-coat-set.jpg', resultImage: 'burgundy-coat-result.jpg', top: '#e5d8c2', layer: '#571b2c', bottom: '#68686b', shoes: '#1d1b1b', accent: '#3b302f' }
   };
   const PRODUCTS = [
     { id: 'coat-burgundy', name: 'Бордовое пальто', image: 'coat-burgundy.jpg', category: 'outerwear', categoryLabel: 'Верхняя одежда', price: 12500, material: 'Шерстяная смесовая ткань', fit: 'Прямой двубортный крой, длина миди', seller: 'Бутик «Север»', email: 'sever@example.com', sizes: ['S', 'M', 'L', 'XL'], colors: [{ name: 'Бордовый', value: '#571b2c' }] },
