@@ -201,6 +201,11 @@
 
   consent.addEventListener('change', updateControls);
   input.addEventListener('input', updateControls);
+  input.addEventListener('keydown', event => {
+    if (event.key !== 'Enter' || event.shiftKey || event.isComposing) return;
+    event.preventDefault();
+    form.requestSubmit();
+  });
   form.addEventListener('submit', event => {
     event.preventDefault();
     void sendMessage(input.value.trim());
