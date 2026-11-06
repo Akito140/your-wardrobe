@@ -1,0 +1,1 @@
+window.STYLO_STYLIST_API_URL = '';
